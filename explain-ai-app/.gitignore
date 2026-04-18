@@ -1,0 +1,4 @@
+.env
+explain-ai-app/.env
+venv/
+__pycache__/

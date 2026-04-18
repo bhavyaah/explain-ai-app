@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Explain AI</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f7fa;
+            text-align: center;
+            padding: 40px;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        form {
+            margin-top: 20px;
+        }
+
+        input, select, button {
+            padding: 10px;
+            margin: 10px;
+            width: 250px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .result-box {
+            margin-top: 30px;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            width: 60%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Explain Like I'm Dumb 🤓</h1>
+    <p>Enter a topic and choose difficulty level</p>
+
+    <form action="/explain" method="POST">
+
+        <input 
+            type="text" 
+            name="topic" 
+            placeholder="Enter topic (e.g. Machine Learning)" 
+            required
+        >
+
+        <br>
+
+        <select name="level" required>
+            <option value="">Select level</option>
+            <option value="like a 5-year-old">Like a 5-year-old</option>
+            <option value="simple">Simple</option>
+            <option value="intermediate">Intermediate</option>
+            <option value="advanced">Advanced</option>
+        </select>
+
+        <br>
+
+        <button type="submit">Explain</button>
+
+    </form>
+
+    {% if result %}
+        <div class="result-box">
+            <h3>Explanation:</h3>
+            <p>{{ result }}</p>
+        </div>
+    {% endif %}
+
+</body>
+</html>
+
