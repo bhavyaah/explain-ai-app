@@ -53,16 +53,6 @@ Perfect for:
 
 ---
 
-## 📸 Preview
-
-> Add your screenshots here 👇
-
-```id="preview-img"
-![App Screenshot](assets/screenshot.png)
-```
-
----
-
 ## 📂 Project Structure
 
 ```id="structure"
