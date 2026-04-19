@@ -1,94 +1,125 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>Explain AI</title>
+    <title>ExplainAI</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background: #f5f7fa;
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: white;
+        }
+
+        .container {
+            background: white;
+            color: black;
+            padding: 30px;
+            border-radius: 20px;
+            width: 400px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
             text-align: center;
-            padding: 40px;
         }
 
         h1 {
-            color: #333;
+            margin-bottom: 5px;
         }
 
-        form {
-            margin-top: 20px;
+        .tagline {
+            font-size: 14px;
+            color: gray;
+            margin-bottom: 20px;
         }
 
-        input, select, button {
-            padding: 10px;
-            margin: 10px;
-            width: 250px;
-            border-radius: 5px;
-            border: 1px solid #ccc;
+        input, select {
+            width: 90%;
+            padding: 12px;
+            margin: 10px 0;
+            border-radius: 10px;
+            border: 1px solid #ddd;
         }
 
         button {
-            background-color: #4CAF50;
+            background: #667eea;
             color: white;
+            padding: 12px 20px;
             border: none;
+            border-radius: 10px;
             cursor: pointer;
+            width: 100%;
+            font-size: 16px;
         }
 
         button:hover {
-            background-color: #45a049;
+            background: #5a67d8;
         }
 
-        .result-box {
-            margin-top: 30px;
-            padding: 20px;
-            background: white;
+        #loading {
+            margin-top: 10px;
+            display: none;
+            color: #667eea;
+        }
+
+        .result {
+            margin-top: 20px;
+            text-align: left;
+            background: #f5f5f5;
+            padding: 15px;
             border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-            width: 60%;
-            margin-left: auto;
-            margin-right: auto;
+            max-height: 200px;
+            overflow-y: auto;
+        }
+
+        footer {
+            margin-top: 15px;
+            font-size: 12px;
+            color: gray;
         }
     </style>
+
+    <script>
+        function showLoading() {
+            document.getElementById("loading").style.display = "block";
+        }
+    </script>
 </head>
 
 <body>
 
-    <h1>Explain Like I'm Dumb 🤓</h1>
-    <p>Enter a topic and choose difficulty level</p>
+<div class="container">
+    <h1>ExplainAI 🤓</h1>
+    <p class="tagline">Understand anything in seconds</p>
 
-    <form action="/explain" method="POST">
+    <form action="/explain" method="post" onsubmit="showLoading()">
+        <input type="text" name="topic" placeholder="Enter topic..." required>
 
-        <input 
-            type="text" 
-            name="topic" 
-            placeholder="Enter topic (e.g. Machine Learning)" 
-            required
-        >
-
-        <br>
-
-        <select name="level" required>
-            <option value="">Select level</option>
-            <option value="like a 5-year-old">Like a 5-year-old</option>
-            <option value="simple">Simple</option>
-            <option value="intermediate">Intermediate</option>
-            <option value="advanced">Advanced</option>
+        <select name="level">
+            <option value="5 years old">Like I'm 5</option>
+            <option value="student">Student level</option>
+            <option value="expert">Expert level</option>
         </select>
 
-        <br>
-
-        <button type="submit">Explain</button>
-
+        <button type="submit">✨ Explain</button>
     </form>
 
+    <p id="loading">⏳ Thinking...</p>
+
     {% if result %}
-        <div class="result-box">
-            <h3>Explanation:</h3>
-            <p>{{ result }}</p>
-        </div>
+    <div class="result">
+        <strong>Explanation:</strong>
+        <p>{{ result }}</p>
+    </div>
     {% endif %}
+
+    <footer>
+        Built by Bhavya 🚀
+    </footer>
+</div>
 
 </body>
 </html>
-
